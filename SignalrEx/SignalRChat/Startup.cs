@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-
+using Orleans;
 
 namespace SignalRChat
 {
@@ -25,6 +25,7 @@ namespace SignalRChat
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
             services.AddSignalR();
             services.AddAuthentication(options =>
             {
@@ -76,6 +77,7 @@ namespace SignalRChat
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapHub<ChatHub>("/hubs/chat");
             });
         }
