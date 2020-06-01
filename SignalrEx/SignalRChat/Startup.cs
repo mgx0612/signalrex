@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Orleans;
+using Grains;
 
 namespace SignalRChat
 {
@@ -78,7 +79,7 @@ namespace SignalRChat
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<ChatHub>("/hubs/chat");
+                endpoints.MapHub<MyHub>("/hubs/chat");
             });
         }
     }
