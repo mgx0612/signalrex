@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using GrainInteface;
 
 namespace Grains
 {
-    public class HelloWorldGrain : Orleans.Grain, GrainInteface.IHelloWorld
+    public class HelloWorldGrain : Orleans.Grain, IHelloWorld
     {
         private readonly ILogger<HelloWorldGrain> _logger;
 
@@ -15,4 +16,6 @@ namespace Grains
 
         public Task<string> SayHello(string name) => Task.FromResult($"Hello {name} world!");
     }
+
+
 }
